@@ -20,7 +20,7 @@ def on_connect(client, userdata, flags, rc):
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-    msg_data = json.loads(msg.payload)
+    msg_data = json.loads(msg.payload.decode('utf-8'))
     now = datetime.datetime.utcnow()
     msg_data['timestamp'] = now.strftime('%Y-%m-%dT%H:%M:%SZ')
     #print(msg_data)
