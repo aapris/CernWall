@@ -12,6 +12,7 @@
         {% else %}
         <button class="mode_btn" data-url="{{ message.url }}" data-id="id_{{ message.id }}">{{ message.name }}</button>
         <p class="statusfield" id="status_{{ message.id }}">-</p>
+        <p>{{ message.description }}</p>
         <p class="urlfield">{{ message.url }}</p>
         {% endif %}
     </li>
