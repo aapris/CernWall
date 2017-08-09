@@ -11,7 +11,7 @@
 """
 
 import json
-# import requests
+import requests
 from flask import (Flask, Response, request, session, url_for, redirect,
      render_template, abort, g, flash, _app_ctx_stack)
 from .cernwall_ui_config import WALL_MODES, DRIVER_URL
@@ -87,10 +87,18 @@ def setmode():
         resp['message'] = 'Mode {} does not exist'.format(requested_mode)
         for mode in modes:
             if requested_mode == mode['id']:
-                resp['status'] = 'OK'
-                resp['message'] = ''
                 # here call ESP
-                print('requests.get({})'.format(mode['url']))
+                try:
+                    r = requests.get(mode['url'], timeout=1.001)
+                    if r.status_code == 200:
+                        resp['status'] = 'OK'
+                        resp['message'] = r.text
+                    else:
+                        resp['status'] = 'ERROR'
+                        resp['message'] = r.text
+                except Exception as err:
+                    resp['status'] = 'ERROR'
+                    resp['message'] = str(err)
                 break
     except ValueError as err:
         status_code = 500
