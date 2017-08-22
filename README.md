@@ -4,6 +4,9 @@ Cernwall is a collection of Arduino and Python scripts,
 configuration files, documentation etc.,
 designed to drive WS2812 LED strips.
 
+Note that code for ESP8266 is in another github repository:
+https://github.com/aapris/WS2812FX
+
 # Installing everything on Raspberry Pi
 Use ssh or local keyboard to log in Raspberry Pi 3 running 
 Raspbian 2017-08-16-raspbian-stretch-lite.img
