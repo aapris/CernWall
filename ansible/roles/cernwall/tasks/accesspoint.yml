@@ -26,6 +26,15 @@
         mode=0644
         backup=yes
 
+- name: Restore eth0
+  copy: src=70-persistent-net.rules
+        dest=/etc/udev/rules.d/70-persistent-net.rules
+        owner=root
+        group=root
+        mode=0644
+        backup=yes
+
+
 - name: Copy dnsmasq config
   copy: src=dnsmasq.conf
         dest=/etc/dnsmasq.conf
