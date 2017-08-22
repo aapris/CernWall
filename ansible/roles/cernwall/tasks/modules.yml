@@ -1,0 +1,21 @@
+- name: Load i2c module
+  lineinfile:
+    path: /etc/modules
+    line: i2c-dev
+
+
+#- name: i2c modules
+#  modprobe: name=i2c-dev state=present
+
+#- name: i2c modules
+#  modprobe: name=i2c-bcm2708 state=present
+
+#- name: Sound module
+#  modprobe: name=snd-bcm2835 state=present
+
+#- name: 1-wire
+#  modprobe: name=w1-gpio state=present
+
+#- name: 1-wire
+#  modprobe: name=w1-therm state=present
+

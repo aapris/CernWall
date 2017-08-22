@@ -1,0 +1,36 @@
+- name: Install Access point related packages
+  tags: apt
+  apt: pkg={{ item }} state=present update-cache=yes cache_valid_time=86400
+  with_items:
+  - nginx-full
+  - supervisor
+
+- name: Copy supervisor conf
+  template: dest=/etc/supervisor/conf.d/cernwall.conf src=supervisor_cernwall.conf.j2
+
+- name: Copy nginx conf
+  template: dest=/etc/nginx/sites-available/default src=nginx_default.j2
+
+- name: Symlink to sites enabled
+  file: src=/etc/nginx/sites-available/default
+        dest=/etc/nginx/sites-enabled/default
+        owner=root
+        group=root
+        state=link
+
+- name: Install requirements
+  pip: 
+    requirements: /home/pi/CernWall/cernwall_ui/cernwall_ui/requirements.txt
+    virtualenv: /home/pi/.virtualenvs/cernwall
+    virtualenv_python: python3
+
+- name: Read supervisor configuration
+  supervisorctl:
+    name: cernwall
+    state: present
+
+- name: Start cernwall app
+  supervisorctl:
+    name: cernwall
+    state: restarted
+

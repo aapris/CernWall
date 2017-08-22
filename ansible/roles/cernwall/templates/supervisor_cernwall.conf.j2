@@ -1,0 +1,8 @@
+[program:cernwall]
+command = /home/pi/.virtualenvs/cernwall/bin/gunicorn cernwall_ui:app -w 2
+directory = /home/pi/CernWall/cernwall_ui/cernwall_ui
+user = pi
+stdout_logfile = /tmp/gunicorn_stdout.log
+stderr_logfile = /tmp/gunicorn_stderr.log
+redirect_stderr = True
+environment = PRODUCTION=1
