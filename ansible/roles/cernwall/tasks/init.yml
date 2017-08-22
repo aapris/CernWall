@@ -104,6 +104,18 @@
   shell: ln -vs /usr/lib/*-linux-gnu*/{libfreetype.so,libz.so,libjpeg.so} /usr/lib/
   ignore_errors: True
 
+- name: Install Cernwall related packages
+  tags: apt
+  apt: pkg={{ item }} state=present update-cache=yes cache_valid_time=86400
+  with_items:
+  - rpi-update
+  - i2c-tools
+  - python3-smbus 
+  - python-smbus
+
+- name: Run rpi-update
+  command: rpi-update
+  become: true
 
 
  
