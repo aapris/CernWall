@@ -3,19 +3,13 @@
     path: /etc/modules
     line: i2c-dev
 
+- name: Add i2c to boot config
+  lineinfile: 
+    path: /boot/config.txt
+    line: "dtparam=i2c_arm=on"
 
-#- name: i2c modules
-#  modprobe: name=i2c-dev state=present
-
-#- name: i2c modules
-#  modprobe: name=i2c-bcm2708 state=present
-
-#- name: Sound module
-#  modprobe: name=snd-bcm2835 state=present
-
-#- name: 1-wire
-#  modprobe: name=w1-gpio state=present
-
-#- name: 1-wire
-#  modprobe: name=w1-therm state=present
-
+- name: comment out possible "i2c off"
+  replace:
+    path: /boot/config.txt
+    regexp: '^(dtparam=i2c_arm=off).*'
+    replace: '# \1  # Commented out by ansible' 
