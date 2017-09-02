@@ -89,7 +89,7 @@ def setmode():
             if requested_mode == mode['id']:
                 # here call ESP
                 try:
-                    r = requests.get(mode['url'], timeout=1.001)
+                    r = requests.get(mode['url'], timeout=4.001)
                     if r.status_code == 200:
                         resp['status'] = 'OK'
                         resp['message'] = r.text
