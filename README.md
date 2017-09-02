@@ -22,12 +22,13 @@ After successful installation of Raspbian, log in to Raspberry Pi and issue foll
 
 ## Install mandatory packages to install the rest
 ```
-sudo apt update && sudo apt -y install git python-pip python-dev libyaml-dev libffi-dev libssl-dev cdbs sshpass
+sudo apt update && sudo apt -y upgrade && sudo apt -y install git python-pip python-dev libyaml-dev libffi-dev libssl-dev cdbs sshpass
 ```
 
-## Install Ansible (this will take some time, maybe more than 10 minutes)
+## Install Ansible
+This will take some time, maybe more than 10 minutes.
 ```
-sudo pip install "ansible<=2.4"
+sudo pip install "ansible<2.4"
 ```
 
 # Clone this repository
