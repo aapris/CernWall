@@ -14,7 +14,8 @@ import json
 import requests
 from flask import (Flask, Response, request, session, url_for, redirect,
      render_template, abort, g, flash, _app_ctx_stack)
-from .cernwall_ui_config import WALL_MODES, DRIVER_URL
+# from .cernwall_ui_config import WALL_MODES, DRIVER_URL
+from cernwall_ui_config import WALL_MODES, DRIVER_URL
 
 # configuration
 DEBUG = True
@@ -37,6 +38,8 @@ def format_url(mode):
         mode['url'] += '&c={}'.format(mode['c'])
     if 'c2' in mode:
         mode['url'] += '&c2={}'.format(mode['c2'])
+    if 'c3' in mode:
+        mode['url'] += '&c3={}'.format(mode['c3'])
     if 't' in mode:
         mode['url'] += '&t={}'.format(mode['t'])
     if 'bs' in mode:
