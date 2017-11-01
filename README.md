@@ -48,3 +48,17 @@ In other case things are not going to work!
 Consult the author or CernWall's management staff to get the right values.
 
 *NOTE:* This will take some time, so crab a cup of coffee or tea.
+
+# Updating ESP's firmware
+
+If you ever have to update the firmware of ESP8266 which is controlling the LED lighs, 
+you can do it from Raspi.
+
+Get precompiled binary `esp8266_webinterface.ino.d1_mini.bin`.
+
+Install esptool:
+`pip install esptool`
+
+Flash the firmware
+`/home/pi/.local/bin/esptool.py --port /dev/ttyUSB0 write_flash 0x00000 esp8266_webinterface.ino.d1_mini.bin && screen /dev/ttyUSB0 115200`
+
