@@ -26,6 +26,7 @@
 <p>If you set any values in the text fields below they will override values in predefined modes.</p>
 <input type="text" id="color"> [c] Color 1 (hex, e.g. ff6699)<br>
 <input type="text" id="color2"> [c2] Color 2 (hex, e.g. ff6699)<br>
+<input type="text" id="color3"> [c3] Color 2 (hex, e.g. ff6699)<br>
 <input type="text" id="speed"> [t] speed (1-255)<br>
 <input type="text" id="brightness"> [bs] brightness (1-255)<br>
 
@@ -45,6 +46,8 @@ $("button").on("click", function() {
     if (c) {url = url.replace(/c=[0-9a-f]{6}/i, 'c=' + c);}
     var c2 = $('#color2').val();
     if (c2) {url = url.replace(/c2=[0-9a-f]{6}/i, 'c2=' + c2);}
+    var c3 = $('#color3').val();
+    if (c3) {url = url.replace(/c3=[0-9a-f]{6}/i, 'c3=' + c3);}
     var t = $('#speed').val();
     if (t) {url = url.replace(/t=[0-9]{1,3}/i, 't=' + t);}
     var bs = $('#brightness').val();
